@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "mes": 3,
+  "ano": 2025,
+  "label": "Março de 2025",
+  "geracao": "2026-05-14",
+  "faturamento": {
+    "total": 4578468.22,
+    "hospedagem": 3640500.73,
+    "ab": 647091.62,
+    "outros": 290875.87
+  },
+  "ocupacao": {
+    "diarias_vendidas": 3834,
+    "diarias_pagas": 2955,
+    "aptos_disp_mes": 7099,
+    "aptos_disp_dia_medio": 229.0,
+    "ocup_media": 54.00760670516974,
+    "ocup_fds": 78.94226103833091,
+    "ocup_semana": 43.807066296149266,
+    "dias_fds": 9,
+    "dias_semana": 22
+  },
+  "adr": {
+    "geral": 1229.758263959391,
+    "fds": 1342.9704192546583,
+    "semana": 1142.2854049190164
+  },
+  "revpar": 511.8940231018454,
+  "permanencia": 0,
+  "lead_time_medio": 0,
+  "lead_time_count": 0,
+  "fat_split": {
+    "fds": 1729745.9,
+    "semana": 1904189.7700000003
+  },
+  "mix_segmento": {},
+  "mix_total_aptos": 0,
+  "canais": {
+    "motor": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "booking": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "expedia": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "bancorbras": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "rdc": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "cvc": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "montreal": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "demais": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    }
+  },
+  "offline": {
+    "aptos": 3834,
+    "diarias_r": 3633935.6700000004
+  },
+  "estados": {
+    "ES": 2435,
+    "RJ": 548,
+    "MG": 426,
+    "BA": 116,
+    "SP": 37,
+    "PE": 6,
+    "DF": 4,
+    "PR": 4,
+    "RN": 3,
+    "AM": 3,
+    "MT": 1
+  },
+  "total_estados": 3583,
+  "es_aptos": 2435,
+  "grande_vitoria": 1450,
+  "demais_municipios_es": 985,
+  "top_cidades": [
+    {
+      "name": "VILA VELHA",
+      "aptos": 433
+    },
+    {
+      "name": "VITORIA",
+      "aptos": 338
+    },
+    {
+      "name": "SERRA",
+      "aptos": 335
+    },
+    {
+      "name": "CAMPOS DOS GOYTACAZES",
+      "aptos": 221
+    },
+    {
+      "name": "CARIACICA",
+      "aptos": 175
+    },
+    {
+      "name": "MARATAIZES",
+      "aptos": 156
+    },
+    {
+      "name": "GUARAPARI",
+      "aptos": 123
+    },
+    {
+      "name": "CACHOEIRO DE ITAPEMIRIM",
+      "aptos": 82
+    },
+    {
+      "name": "PIUMA",
+      "aptos": 79
+    },
+    {
+      "name": "SAO MATEUS",
+      "aptos": 66
+    },
+    {
+      "name": "ANCHIETA",
+      "aptos": 64
+    },
+    {
+      "name": "LINHARES",
+      "aptos": 53
+    },
+    {
+      "name": "MACAE",
+      "aptos": 49
+    },
+    {
+      "name": "IPATINGA",
+      "aptos": 48
+    },
+    {
+      "name": "GOVERNADOR VALADARES",
+      "aptos": 47
+    },
+    {
+      "name": "ITAPERUNA",
+      "aptos": 45
+    },
+    {
+      "name": "ARACRUZ",
+      "aptos": 44
+    },
+    {
+      "name": "TEIXEIRA DE FREITAS",
+      "aptos": 44
+    },
+    {
+      "name": "ITAPEMIRIM",
+      "aptos": 44
+    },
+    {
+      "name": "VILA VALERIO",
+      "aptos": 42
+    },
+    {
+      "name": "BOM JESUS DO ITABAPOANA",
+      "aptos": 40
+    },
+    {
+      "name": "NANUQUE",
+      "aptos": 34
+    },
+    {
+      "name": "VIANA",
+      "aptos": 34
+    },
+    {
+      "name": "COLATINA",
+      "aptos": 31
+    },
+    {
+      "name": "CABO FRIO",
+      "aptos": 30
+    },
+    {
+      "name": "PORTO SEGURO",
+      "aptos": 26
+    },
+    {
+      "name": "CARATINGA",
+      "aptos": 22
+    },
+    {
+      "name": "RIO DE JANEIRO",
+      "aptos": 21
+    },
+    {
+      "name": "MURIAE",
+      "aptos": 21
+    },
+    {
+      "name": "NOVA VENECIA",
+      "aptos": 19
+    }
+  ],
+  "top_empresas": [],
+  "dados_parciais": true,
+  "dados_indisponiveis": [
+    "canais",
+    "mix_segmento",
+    "top_empresas",
+    "permanencia"
+  ]
+}

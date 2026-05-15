@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "mes": 6,
+  "ano": 2024,
+  "label": "Junho de 2024",
+  "geracao": "2026-05-14",
+  "faturamento": {
+    "total": 2703515.39,
+    "hospedagem": 2162067.52,
+    "ab": 359975.7,
+    "outros": 181472.17
+  },
+  "ocupacao": {
+    "diarias_vendidas": 2851,
+    "diarias_pagas": 2088,
+    "aptos_disp_mes": 6900,
+    "aptos_disp_dia_medio": 230.0,
+    "ocup_media": 41.31884057971015,
+    "ocup_fds": 76.66666666666667,
+    "ocup_semana": 26.16977225672878,
+    "dias_fds": 9,
+    "dias_semana": 21
+  },
+  "adr": {
+    "geral": 1022.3574712643677,
+    "fds": 1101.4845475819031,
+    "semana": 896.5002605459055
+  },
+  "revpar": 309.3742608695652,
+  "permanencia": 2.0,
+  "lead_time_medio": 0,
+  "lead_time_count": 0,
+  "fat_split": {
+    "fds": 1412103.19,
+    "semana": 722579.2099999998
+  },
+  "mix_segmento": {},
+  "mix_total_aptos": 0,
+  "canais": {
+    "motor": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "booking": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "expedia": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "bancorbras": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "rdc": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "cvc": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "montreal": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    },
+    "demais": {
+      "aptos": 0,
+      "diarias_r": 0.0
+    }
+  },
+  "offline": {
+    "aptos": 2851,
+    "diarias_r": 2134682.4
+  },
+  "estados": {
+    "ES": 1664,
+    "MG": 317,
+    "RJ": 252,
+    "BA": 90,
+    "SP": 3,
+    "PR": 2,
+    "AM": 2,
+    "RN": 1,
+    "PA": 1
+  },
+  "total_estados": 2332,
+  "es_aptos": 1664,
+  "grande_vitoria": 1078,
+  "demais_municipios_es": 586,
+  "top_cidades": [
+    {
+      "name": "VILA VELHA",
+      "aptos": 297
+    },
+    {
+      "name": "SERRA",
+      "aptos": 285
+    },
+    {
+      "name": "VITORIA",
+      "aptos": 245
+    },
+    {
+      "name": "CARIACICA",
+      "aptos": 138
+    },
+    {
+      "name": "GOVERNADOR VALADARES",
+      "aptos": 107
+    },
+    {
+      "name": "LINHARES",
+      "aptos": 107
+    },
+    {
+      "name": "CAMPOS DOS GOYTACAZES",
+      "aptos": 95
+    },
+    {
+      "name": "GUARAPARI",
+      "aptos": 87
+    },
+    {
+      "name": "CACHOEIRO DE ITAPEMIRIM",
+      "aptos": 80
+    },
+    {
+      "name": "COLATINA",
+      "aptos": 46
+    },
+    {
+      "name": "IPATINGA",
+      "aptos": 42
+    },
+    {
+      "name": "ARACRUZ",
+      "aptos": 36
+    },
+    {
+      "name": "MARATAIZES",
+      "aptos": 33
+    },
+    {
+      "name": "SAO MATEUS",
+      "aptos": 31
+    },
+    {
+      "name": "ITAPEMIRIM",
+      "aptos": 28
+    },
+    {
+      "name": "VIANA",
+      "aptos": 23
+    },
+    {
+      "name": "TEIXEIRA DE FREITAS",
+      "aptos": 19
+    },
+    {
+      "name": "VITORIA DA CONQUISTA",
+      "aptos": 19
+    },
+    {
+      "name": "ANCHIETA",
+      "aptos": 18
+    },
+    {
+      "name": "RIO DAS OSTRAS",
+      "aptos": 17
+    },
+    {
+      "name": "EUNAPOLIS",
+      "aptos": 17
+    },
+    {
+      "name": "MACAE",
+      "aptos": 16
+    },
+    {
+      "name": "ITAPERUNA",
+      "aptos": 15
+    },
+    {
+      "name": "BOM JESUS DO ITABAPOANA",
+      "aptos": 14
+    },
+    {
+      "name": "RIO DE JANEIRO",
+      "aptos": 14
+    },
+    {
+      "name": "SAO JOAO DA BARRA",
+      "aptos": 14
+    },
+    {
+      "name": "SANTA MARIA DE JETIBA",
+      "aptos": 12
+    },
+    {
+      "name": "MANHUACU",
+      "aptos": 12
+    },
+    {
+      "name": "DOMINGOS MARTINS",
+      "aptos": 12
+    },
+    {
+      "name": "TEOFILO OTONI",
+      "aptos": 11
+    }
+  ],
+  "top_empresas": [],
+  "dados_parciais": true,
+  "dados_indisponiveis": [
+    "canais",
+    "mix_segmento",
+    "top_empresas",
+    "permanencia"
+  ]
+}
