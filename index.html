@@ -184,14 +184,21 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(
 <div class="filter-bar" id="filter-bar" style="display:none">
   <div class="container">
     <div class="filter-group">
-      <label>Período</label>
-      <select id="filter-mes"></select>
+      <label>Visão</label>
+      <select id="filter-periodo">
+        <option value="mes" selected>Mês</option>
+        <option value="tri">Trimestre</option>
+        <option value="sem">Semestre</option>
+        <option value="ano">Ano</option>
+        <option value="range">Intervalo livre</option>
+      </select>
     </div>
+    <span id="period-extra" style="display:contents"></span>
     <div class="filter-group">
       <label>Comparar com</label>
       <select id="filter-compare">
-        <option value="yoy">Mesmo mês ano anterior (YoY)</option>
-        <option value="prev">Mês anterior</option>
+        <option value="yoy">Mesmo período ano anterior (YoY)</option>
+        <option value="prev">Período anterior</option>
         <option value="none">Sem comparação</option>
       </select>
     </div>
@@ -210,6 +217,10 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(
         <option value="online">Só online</option>
         <option value="offline">Só offline</option>
       </select>
+    </div>
+    <div class="filter-group">
+      <label>&nbsp;</label>
+      <button id="btn-compare-view" class="btn" style="background:var(--navy);border-color:var(--navy)">Comparativo lado-a-lado</button>
     </div>
     <div class="filter-info" id="filter-info">—</div>
   </div>
@@ -278,10 +289,18 @@ function pct(now,ref){return ref?(now-ref)/ref*100:0;}
 // =============================================================
 const state={
   available:[],   // [{key, mes, ano, label, data}]
-  current:null,   // {key,...} selected month
+  current:null,   // {key,...} mês selecionado (modo mês)
   compareMode:'yoy',
   topN:30,
   canaisFilter:'all',
+  // ---- período / visão ----
+  periodMode:'mes',   // 'mes'|'tri'|'sem'|'ano'|'range'
+  periodAno:null,     // ano-base para tri/sem/ano
+  periodTri:1,        // 1..4
+  periodSem:1,        // 1..2
+  rangeFrom:null,     // 'YYYY-MM'
+  rangeTo:null,       // 'YYYY-MM'
+  viewMode:'dash',    // 'dash'|'compare'
   uploadFiles:{ocupacao:null,origens:null,dre:null,omnibees:null,referencia:null},
   uploadMes:null,
   uploadAno:null,
@@ -335,24 +354,187 @@ function populateMonthSelector(){
   if(state.current)sel.value=state.current.key;
 }
 
-function findReference(currentMonth,mode){
-  if(mode==='none')return null;
-  let targetYear,targetMonth;
-  if(mode==='yoy'){
-    targetYear=currentMonth.ano-1;targetMonth=currentMonth.mes;
-  }else if(mode==='prev'){
-    targetMonth=currentMonth.mes-1;targetYear=currentMonth.ano;
-    if(targetMonth<1){targetMonth=12;targetYear--;}
+// =============================================================
+// PERÍODO: chaves, agregação e resolução de seleção
+// =============================================================
+const MES_ABBR=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+function dataFor(key){const m=state.available.find(x=>x.key===key);return m?m.data:null;}
+function keyOf(ano,mes){return `${ano}-${String(mes).padStart(2,'0')}`;}
+function shiftKey(key,deltaMeses){
+  let[y,m]=key.split('-').map(Number);
+  let idx=(y*12+(m-1))+deltaMeses; // 0-based months
+  return keyOf(Math.floor(idx/12),(idx%12)+1);
+}
+function anosDisponiveis(){return[...new Set(state.available.map(m=>m.ano))].sort((a,b)=>a-b);}
+
+// Lista de chaves 'YYYY-MM' do período atual (só as que existem), em ordem crescente
+function monthKeysForPeriod(){
+  let keys=[];
+  if(state.periodMode==='mes'){
+    keys=state.current?[state.current.key]:[];
+  }else if(state.periodMode==='tri'){
+    const ini=(state.periodTri-1)*3+1;
+    for(let m=ini;m<ini+3;m++)keys.push(keyOf(state.periodAno,m));
+  }else if(state.periodMode==='sem'){
+    const ini=(state.periodSem-1)*6+1;
+    for(let m=ini;m<ini+6;m++)keys.push(keyOf(state.periodAno,m));
+  }else if(state.periodMode==='ano'){
+    for(let m=1;m<=12;m++)keys.push(keyOf(state.periodAno,m));
+  }else if(state.periodMode==='range'){
+    if(state.rangeFrom&&state.rangeTo){
+      let a=state.rangeFrom,b=state.rangeTo;
+      if(a>b){const t=a;a=b;b=t;}
+      let k=a;let guard=0;
+      while(k<=b&&guard++<120){keys.push(k);k=shiftKey(k,1);}
+    }
   }
-  return state.available.find(m=>m.mes===targetMonth&&m.ano===targetYear);
+  const have=new Set(state.available.map(m=>m.key));
+  return keys.filter(k=>have.has(k)).sort();
+}
+
+// Chaves do período de comparação conforme compareMode
+function refKeysForPeriod(curKeys){
+  if(state.compareMode==='none'||!curKeys.length)return[];
+  const span=curKeys.length;
+  const delta=state.compareMode==='yoy'?-12:-span;
+  const have=new Set(state.available.map(m=>m.key));
+  return curKeys.map(k=>shiftKey(k,delta)).filter(k=>have.has(k)).sort();
+}
+
+// Média ponderada ignorando pesos <=0
+function wavg(pairs){ // pairs: [[valor,peso],...]
+  let sv=0,sw=0;
+  for(const[v,w]of pairs){if(w>0&&v!=null&&!isNaN(v)){sv+=v*w;sw+=w;}}
+  return sw>0?sv/sw:0;
+}
+
+// Agrega uma lista de objetos de dados (schema mensal) num único objeto de período
+function aggregate(list,label){
+  if(!list.length)return null;
+  if(list.length===1){const d=JSON.parse(JSON.stringify(list[0]));d.label=label;return d;}
+  const sum=(f)=>list.reduce((a,d)=>a+(f(d)||0),0);
+  const nonParc=list.filter(d=>!d.dados_parciais);
+
+  // ---- aditivos ----
+  const fat={total:sum(d=>d.faturamento.total),hospedagem:sum(d=>d.faturamento.hospedagem),ab:sum(d=>d.faturamento.ab),outros:sum(d=>d.faturamento.outros)};
+  const dvend=sum(d=>d.ocupacao.diarias_vendidas);
+  const dpag=sum(d=>d.ocupacao.diarias_pagas);
+  const dispMes=sum(d=>d.ocupacao.aptos_disp_mes);
+  const diasFds=sum(d=>d.ocupacao.dias_fds);
+  const diasSem=sum(d=>d.ocupacao.dias_semana);
+  const fatSplit={fds:sum(d=>d.fat_split.fds),semana:sum(d=>d.fat_split.semana)};
+
+  // ---- derivados via média ponderada (reproduz mês isolado e soma corretamente) ----
+  const adrGeral=wavg(list.map(d=>[d.adr.geral,d.ocupacao.diarias_pagas]));
+  const adrFds=wavg(list.map(d=>[d.adr.fds,d.adr.fds?d.fat_split.fds/d.adr.fds:0]));
+  const adrSem=wavg(list.map(d=>[d.adr.semana,d.adr.semana?d.fat_split.semana/d.adr.semana:0]));
+  const revpar=wavg(list.map(d=>[d.revpar,d.ocupacao.aptos_disp_mes]));
+  const ocupMedia=wavg(list.map(d=>[d.ocupacao.ocup_media,d.ocupacao.aptos_disp_mes]));
+  const ocupFds=wavg(list.map(d=>[d.ocupacao.ocup_fds,(d.ocupacao.aptos_disp_dia_medio||0)*d.ocupacao.dias_fds]));
+  const ocupSem=wavg(list.map(d=>[d.ocupacao.ocup_semana,(d.ocupacao.aptos_disp_dia_medio||0)*d.ocupacao.dias_semana]));
+  // permanência = total diárias / total estadias (estadias = diárias/perm), só meses com perm>0
+  let sDiar=0,sEst=0;
+  list.forEach(d=>{if(d.permanencia>0){sDiar+=d.ocupacao.diarias_vendidas;sEst+=d.ocupacao.diarias_vendidas/d.permanencia;}});
+  const permanencia=sEst>0?sDiar/sEst:0;
+  const ltCount=sum(d=>d.lead_time_count||0);
+  const leadTime=wavg(list.map(d=>[d.lead_time_medio,d.lead_time_count||0]));
+
+  // ---- merges por nome ----
+  const mergeNamed=(arr,key,sub)=>{
+    const map={};
+    arr.forEach(d=>(d[key]||[]).forEach(it=>{
+      if(!map[it.name])map[it.name]={name:it.name,aptos:0,diarias_r:0};
+      map[it.name].aptos+=it.aptos||0;map[it.name].diarias_r+=it.diarias_r||0;
+    }));
+    return Object.values(map).sort((a,b)=>b.aptos-a.aptos).slice(0,30);
+  };
+  const mergeDict=(arr,key)=>{
+    const map={};
+    arr.forEach(d=>Object.entries(d[key]||{}).forEach(([k,v])=>{map[k]=(map[k]||0)+(v||0);}));
+    return map;
+  };
+  const mergeChannels=(arr)=>{
+    const map={};
+    arr.forEach(d=>Object.entries(d.canais||{}).forEach(([k,v])=>{
+      if(!map[k])map[k]={aptos:0,diarias_r:0};
+      map[k].aptos+=v.aptos||0;map[k].diarias_r+=v.diarias_r||0;
+    }));
+    return map;
+  };
+  const mergeSeg=(arr)=>{
+    const map={};
+    arr.forEach(d=>Object.entries(d.mix_segmento||{}).forEach(([k,v])=>{
+      if(!map[k])map[k]={aptos:0,diarias_r:0};
+      map[k].aptos+=v.aptos||0;map[k].diarias_r+=v.diarias_r||0;
+    }));
+    return map;
+  };
+
+  return {
+    schema_version:1,agregado:true,label,geracao:`agregado · ${list.length} meses`,
+    faturamento:fat,
+    ocupacao:{diarias_vendidas:dvend,diarias_pagas:dpag,aptos_disp_mes:dispMes,
+      aptos_disp_dia_medio:(diasFds+diasSem)?dispMes/(diasFds+diasSem):0,
+      ocup_media:ocupMedia,ocup_fds:ocupFds,ocup_semana:ocupSem,dias_fds:diasFds,dias_semana:diasSem},
+    adr:{geral:adrGeral,fds:adrFds,semana:adrSem},
+    revpar,permanencia,lead_time_medio:leadTime,lead_time_count:ltCount,
+    fat_split:fatSplit,
+    // ---- comerciais: só meses completos ----
+    mix_segmento:mergeSeg(nonParc),
+    mix_total_aptos:nonParc.reduce((a,d)=>a+(d.mix_total_aptos||0),0),
+    canais:mergeChannels(nonParc),
+    offline:{aptos:nonParc.reduce((a,d)=>a+(d.offline?.aptos||0),0),diarias_r:nonParc.reduce((a,d)=>a+(d.offline?.diarias_r||0),0)},
+    top_empresas:mergeNamed(nonParc,'top_empresas').slice(0,10),
+    // ---- origem: disponível em todos ----
+    estados:mergeDict(list,'estados'),
+    total_estados:sum(d=>d.total_estados),
+    es_aptos:sum(d=>d.es_aptos),
+    grande_vitoria:sum(d=>d.grande_vitoria),
+    demais_municipios_es:sum(d=>d.demais_municipios_es),
+    top_cidades:mergeNamed(list,'top_cidades'),
+    dados_parciais:nonParc.length===0,
+    meses_parciais_no_periodo:list.length-nonParc.length,
+    meses_no_periodo:list.length,
+  };
+}
+
+// Label legível do período a partir das chaves reais cobertas
+function spanPretty(keys){
+  if(!keys.length)return '—';
+  const f=keys[0].split('-').map(Number),l=keys[keys.length-1].split('-').map(Number);
+  if(keys.length===1)return `${MES_ABBR[f[1]-1]}/${f[0]}`;
+  if(f[0]===l[0])return `${MES_ABBR[f[1]-1]}–${MES_ABBR[l[1]-1]} ${f[0]}`;
+  return `${MES_ABBR[f[1]-1]}/${f[0]}–${MES_ABBR[l[1]-1]}/${l[0]}`;
+}
+function periodLabel(keys){
+  if(state.periodMode==='mes')return state.current?state.current.label:'—';
+  if(!keys.length)return '—';
+  if(state.periodMode==='tri')return `${state.periodTri}º Trimestre ${state.periodAno} · ${spanPretty(keys)}`;
+  if(state.periodMode==='sem')return `${state.periodSem}º Semestre ${state.periodAno} · ${spanPretty(keys)}`;
+  if(state.periodMode==='ano'){const completo=keys.length===12;return `Ano ${state.periodAno}${completo?'':' · acum.'} · ${spanPretty(keys)}`;}
+  return spanPretty(keys); // range
+}
+
+// Resolve a seleção atual: objetos de dados (cur/ref) já com label
+function resolveSelection(){
+  const curKeys=monthKeysForPeriod();
+  const refKeys=refKeysForPeriod(curKeys);
+  const curLabel=periodLabel(curKeys);
+  const refLabel=refKeys.length?spanPretty(refKeys):null;
+  const cur=curKeys.length?aggregate(curKeys.map(dataFor),curLabel):null;
+  const ref=refKeys.length?aggregate(refKeys.map(dataFor),refLabel):null;
+  return{cur,ref,curKeys,refKeys,curLabel,refLabel};
 }
 
 function updateFilterInfo(){
   const info=document.getElementById('filter-info');
-  const ref=findReference(state.current,state.compareMode);
-  let text=`${state.available.length} ${state.available.length===1?'mês':'meses'} no hist.`;
+  const sel=resolveSelection();
+  let text=`${sel.curKeys.length} ${sel.curKeys.length===1?'mês':'meses'} no período`;
   if(state.compareMode!=='none'){
-    text+=ref?` · comparando com ${ref.label}`:` · ⚠ sem dados de comparação`;
+    text+=sel.ref?` · vs <strong>${sel.refLabel}</strong>`:` · ⚠ sem período de comparação`;
+  }
+  if(sel.cur&&sel.cur.meses_parciais_no_periodo>0&&!sel.cur.dados_parciais){
+    text+=` · ${sel.cur.meses_parciais_no_periodo} m sem detalhe comercial`;
   }
   info.innerHTML=text;
 }
@@ -361,13 +543,14 @@ function updateFilterInfo(){
 // RENDERER (recebe dados do JSON e renderiza dashboard)
 // =============================================================
 function renderDashboard(){
-  const cur=state.current?.data;
+  const sel=resolveSelection();
+  const cur=sel.cur;
   if(!cur){
     document.getElementById('dashboard-content').innerHTML=
-      `<div class="empty-state"><h2>Sem dados</h2><p>Adicione um mês usando o botão "Adicionar mês" no topo.</p></div>`;
+      `<div class="empty-state"><h2>Sem dados</h2><p>Selecione um período com dados ou adicione um mês no topo.</p></div>`;
     return;
   }
-  const ref=findReference(state.current,state.compareMode)?.data||{};
+  const ref=sel.ref||{};
 
   // Compute deltas
   function delta(now,refv,abs=false){
@@ -594,6 +777,129 @@ function renderCharts(cur,canaisLista,segs){
     options:{responsive:true,maintainAspectRatio:true,cutout:'55%',
       plugins:{legend:{display:false},
                tooltip:{callbacks:{label:c=>c.label+': '+fmtBRL(c.raw)}}}}});
+}
+
+// =============================================================
+// VISÃO COMPARATIVO LADO-A-LADO (período vs período)
+// =============================================================
+function renderComparison(){
+  const sel=resolveSelection();
+  const cur=sel.cur;
+  const box=document.getElementById('dashboard-content');
+  if(!cur){box.innerHTML=`<div class="empty-state"><h2>Sem dados</h2><p>Selecione um período com dados.</p></div>`;return;}
+  if(!sel.ref){
+    box.innerHTML=`<div class="empty-state"><h2>Escolha uma comparação</h2><p>O comparativo precisa de um período de referência. No filtro "Comparar com", selecione <strong>YoY</strong> (mesmo período do ano anterior) ou <strong>Período anterior</strong>.</p></div>`;
+    return;
+  }
+  const ref=sel.ref;
+  const g=(o,path)=>path.split('.').reduce((a,k)=>a==null?null:a[k],o);
+  function row(label,path,fmt,note){
+    const a=g(ref,path),b=g(cur,path);
+    if(a==null||b==null||(a===0&&b===0&&note==='hide'))return '';
+    const diff=b-a,p=a?diff/a*100:null;
+    const pos=diff>=0,cls=pos?'var-pos':'var-neg',sign=pos?'+':'';
+    const fmtV={money:fmtBRL,num:fmtNum,pct:v=>fmtPct(v),dias:v=>fmtDias(v),diasint:v=>(v||0).toFixed(1).replace('.',',')}[fmt];
+    const fmtD={money:fmtBRL,num:fmtNum,pct:v=>(v>=0?'+':'')+v.toFixed(1).replace('.',',')+'pp',dias:v=>(v>=0?'+':'')+v.toFixed(2).replace('.',',')+'d',diasint:v=>(v>=0?'+':'')+v.toFixed(1).replace('.',',')+'d'}[fmt];
+    const pctTxt=(fmt==='pct')?'':`<td class="right ${cls}">${p==null?'—':sign+p.toFixed(1).replace('.',',')+'%'}</td>`;
+    const diffTxt=(fmt==='pct')?`<td class="right ${cls}" colspan="2">${fmtD(diff)}</td>`:`<td class="right ${cls}">${(fmt==='money'?(pos?'+':'')+fmtBRL(diff):fmtD(diff))}</td>${pctTxt}`;
+    return `<tr><td class="bold">${label}</td><td class="right">${fmtV(a)}</td><td class="right bold">${fmtV(b)}</td>${diffTxt}</tr>`;
+  }
+  // Leitura preço-vs-volume
+  const fatVar=ref.faturamento.total?(cur.faturamento.total-ref.faturamento.total)/ref.faturamento.total*100:0;
+  const pagVar=ref.ocupacao.diarias_pagas?(cur.ocupacao.diarias_pagas-ref.ocupacao.diarias_pagas)/ref.ocupacao.diarias_pagas*100:0;
+  const vendVar=ref.ocupacao.diarias_vendidas?(cur.ocupacao.diarias_vendidas-ref.ocupacao.diarias_vendidas)/ref.ocupacao.diarias_vendidas*100:0;
+  const adrVar=ref.adr.geral?(cur.adr.geral-ref.adr.geral)/ref.adr.geral*100:0;
+  let leitura;
+  const fmtSig=v=>(v>=0?'+':'')+v.toFixed(1).replace('.',',')+'%';
+  if(fatVar>0&&Math.abs(pagVar)<3&&adrVar>3){
+    leitura=`Faturamento <strong>${fmtSig(fatVar)}</strong> com volume praticamente estável (diárias pagas ${fmtSig(pagVar)}). O ganho veio da <strong>diária média (${fmtSig(adrVar)})</strong> — crescimento puxado por <strong>preço, não por volume</strong>.`;
+  }else if(fatVar>0&&adrVar>vendVar&&adrVar>0){
+    leitura=`Faturamento <strong>${fmtSig(fatVar)}</strong>. A diária média subiu ${fmtSig(adrVar)} e as diárias vendidas ${fmtSig(vendVar)} — o resultado é puxado <strong>mais por preço do que por volume</strong>.`;
+  }else if(fatVar>0&&vendVar>=adrVar){
+    leitura=`Faturamento <strong>${fmtSig(fatVar)}</strong>, com volume (diárias vendidas ${fmtSig(vendVar)}) contribuindo tanto quanto ou mais que a diária média (${fmtSig(adrVar)}).`;
+  }else if(fatVar<0){
+    leitura=`Faturamento <strong>${fmtSig(fatVar)}</strong>. Diárias vendidas ${fmtSig(vendVar)}, diária média ${fmtSig(adrVar)}.`;
+  }else{
+    leitura=`Faturamento ${fmtSig(fatVar)} · diárias pagas ${fmtSig(pagVar)} · diária média ${fmtSig(adrVar)}.`;
+  }
+  const permRow=(cur.permanencia>0&&ref.permanencia>0)?row('Permanência média','permanencia','dias'):'';
+  const ltRow=(cur.lead_time_count>0&&ref.lead_time_count>0)?row('Lead time médio (dias)','lead_time_medio','diasint'):'';
+  const parcialAviso=(cur.dados_parciais||ref.dados_parciais)?`<div style="background:#FCE9C2;border-left:4px solid #F0A014;padding:10px 16px;border-radius:6px;margin:10px 0 0;font-size:12px;color:#8B6420">Permanência e lead time não aparecem porque um dos períodos é do formato antigo do Silbeck (sem esse detalhe).</div>`:'';
+
+  box.innerHTML=`
+    <div class="report-header"><div>
+      <div class="report-title">Comparativo de períodos</div>
+      <div class="report-subtitle"><strong>${cur.label}</strong> vs <strong>${ref.label}</strong></div>
+    </div></div>
+    <div style="background:linear-gradient(135deg,#14143C,#2A2A5A);color:white;border-radius:12px;padding:22px 26px;margin-bottom:24px">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);font-weight:700;margin-bottom:8px">Leitura — preço vs. volume</div>
+      <div style="font-size:16px;line-height:1.55">${leitura}</div>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Indicador</th><th class="right">${ref.label}</th><th class="right">${cur.label}</th><th class="right">Variação</th><th class="right">%</th></tr></thead>
+      <tbody>
+        ${row('Faturamento total','faturamento.total','money')}
+        ${row('Faturamento hospedagem','faturamento.hospedagem','money')}
+        ${row('A & B','faturamento.ab','money')}
+        ${row('Outros','faturamento.outros','money')}
+        ${row('Diárias vendidas','ocupacao.diarias_vendidas','num')}
+        ${row('Diárias pagas','ocupacao.diarias_pagas','num')}
+        ${row('ADR (diária média)','adr.geral','money')}
+        ${row('RevPAR','revpar','money')}
+        ${row('Ocupação média','ocupacao.ocup_media','pct')}
+        ${permRow}
+        ${ltRow}
+      </tbody>
+    </table>
+    ${parcialAviso}
+    <div class="footer-info">Período atual: ${sel.curKeys.length} ${sel.curKeys.length===1?'mês':'meses'} · Referência: ${sel.refKeys.length} ${sel.refKeys.length===1?'mês':'meses'}. Faturamento, diárias, ADR, RevPAR e ocupação disponíveis para todo o histórico.</div>
+  `;
+}
+
+// Dispatcher de renderização
+function render(){
+  if(state.viewMode==='compare')renderComparison();
+  else renderDashboard();
+}
+
+// =============================================================
+// CONTROLES DE PERÍODO (dinâmicos)
+// =============================================================
+function refresh(){updateFilterInfo();render();}
+
+function buildSelect(id,opts,sel){
+  return `<select id="${id}">${opts.map(o=>`<option value="${o.v}"${o.v==sel?' selected':''}>${o.t}</option>`).join('')}</select>`;
+}
+function renderPeriodControls(){
+  const box=document.getElementById('period-extra');
+  if(!box)return;
+  const anos=anosDisponiveis();
+  const anoOpts=anos.map(a=>({v:a,t:a}));
+  const mesOpts=state.available.slice().sort((a,b)=>a.key<b.key?-1:1).map(m=>({v:m.key,t:m.label}));
+  let html='';
+  if(state.periodMode==='mes'){
+    html=`<label>Mês</label>${buildSelect('filter-mes',state.available.map(m=>({v:m.key,t:m.label})),state.current?.key)}`;
+  }else if(state.periodMode==='tri'){
+    html=`<div class="filter-group"><label>Ano</label>${buildSelect('pc-ano',anoOpts,state.periodAno)}</div>
+          <div class="filter-group"><label>Trimestre</label>${buildSelect('pc-tri',[{v:1,t:'1º (Jan–Mar)'},{v:2,t:'2º (Abr–Jun)'},{v:3,t:'3º (Jul–Set)'},{v:4,t:'4º (Out–Dez)'}],state.periodTri)}</div>`;
+  }else if(state.periodMode==='sem'){
+    html=`<div class="filter-group"><label>Ano</label>${buildSelect('pc-ano',anoOpts,state.periodAno)}</div>
+          <div class="filter-group"><label>Semestre</label>${buildSelect('pc-sem',[{v:1,t:'1º (Jan–Jun)'},{v:2,t:'2º (Jul–Dez)'}],state.periodSem)}</div>`;
+  }else if(state.periodMode==='ano'){
+    html=`<label>Ano</label>${buildSelect('pc-ano',anoOpts,state.periodAno)}`;
+  }else if(state.periodMode==='range'){
+    html=`<div class="filter-group"><label>De</label>${buildSelect('pc-from',mesOpts,state.rangeFrom)}</div>
+          <div class="filter-group"><label>Até</label>${buildSelect('pc-to',mesOpts,state.rangeTo)}</div>`;
+  }
+  box.innerHTML=html;
+  // wiring
+  const wire=(id,fn)=>{const el=document.getElementById(id);if(el)el.addEventListener('change',e=>{fn(e.target.value);refresh();});};
+  wire('filter-mes',v=>{state.current=state.available.find(m=>m.key===v);});
+  wire('pc-ano',v=>{state.periodAno=parseInt(v);});
+  wire('pc-tri',v=>{state.periodTri=parseInt(v);});
+  wire('pc-sem',v=>{state.periodSem=parseInt(v);});
+  wire('pc-from',v=>{state.rangeFrom=v;});
+  wire('pc-to',v=>{state.rangeTo=v;});
 }
 
 // =============================================================
@@ -922,13 +1228,30 @@ document.getElementById('btn-gerar').addEventListener('click',async()=>{
   }catch(err){console.error(err);showStatus('Erro: '+err.message,'error');document.getElementById('btn-gerar').disabled=false;}
 });
 
-document.getElementById('filter-mes').addEventListener('change',e=>{
-  state.current=state.available.find(m=>m.key===e.target.value);
-  updateFilterInfo();renderDashboard();
+document.getElementById('filter-periodo').addEventListener('change',e=>{
+  state.periodMode=e.target.value;
+  // defaults sensatos ao trocar de modo
+  const anos=anosDisponiveis();const ultAno=anos[anos.length-1];
+  if(state.periodAno==null)state.periodAno=ultAno;
+  if(state.periodMode==='tri'&&state.current)state.periodTri=Math.ceil(state.current.mes/3);
+  if(state.periodMode==='sem'&&state.current)state.periodSem=state.current.mes<=6?1:2;
+  if(state.periodMode==='range'&&(!state.rangeFrom||!state.rangeTo)){
+    const keys=state.available.map(m=>m.key).sort();
+    state.rangeTo=keys[keys.length-1];
+    state.rangeFrom=keyOf(ultAno,1); // YTD do último ano por padrão
+  }
+  renderPeriodControls();refresh();
 });
-document.getElementById('filter-compare').addEventListener('change',e=>{state.compareMode=e.target.value;updateFilterInfo();renderDashboard();});
-document.getElementById('filter-topn').addEventListener('change',e=>{state.topN=parseInt(e.target.value);renderDashboard();});
-document.getElementById('filter-canais').addEventListener('change',e=>{state.canaisFilter=e.target.value;renderDashboard();});
+document.getElementById('filter-compare').addEventListener('change',e=>{state.compareMode=e.target.value;refresh();});
+document.getElementById('filter-topn').addEventListener('change',e=>{state.topN=parseInt(e.target.value);render();});
+document.getElementById('filter-canais').addEventListener('change',e=>{state.canaisFilter=e.target.value;render();});
+document.getElementById('btn-compare-view').addEventListener('click',e=>{
+  state.viewMode=state.viewMode==='compare'?'dash':'compare';
+  const b=e.target;
+  if(state.viewMode==='compare'){b.style.background='var(--gold)';b.style.borderColor='var(--gold)';b.style.color='var(--navy)';b.textContent='← Voltar ao dashboard';}
+  else{b.style.background='var(--navy)';b.style.borderColor='var(--navy)';b.style.color='white';b.textContent='Comparativo lado-a-lado';}
+  refresh();
+});
 
 // =============================================================
 // INIT
@@ -947,10 +1270,15 @@ document.getElementById('filter-canais').addEventListener('change',e=>{state.can
   document.getElementById('dashboard').classList.add('show');
   if(state.available.length){
     state.current=state.available[0];
-    populateMonthSelector();
+    const anos=anosDisponiveis();state.periodAno=anos[anos.length-1];
+    state.periodTri=Math.ceil(state.current.mes/3);
+    state.periodSem=state.current.mes<=6?1:2;
+    const keys=state.available.map(m=>m.key).sort();
+    state.rangeTo=keys[keys.length-1];state.rangeFrom=keyOf(state.periodAno,1);
+    renderPeriodControls();
     document.getElementById('filter-bar').style.display='block';
     updateFilterInfo();
-    renderDashboard();
+    render();
   }else{
     document.getElementById('dashboard-content').innerHTML=
       `<div class="empty-state"><h2>Sem meses no histórico</h2><p>Clique em "Adicionar mês" no topo pra carregar o primeiro relatório. O JSON gerado pelo app deve ser commitado em <code>/data/AAAA-MM.json</code>.</p></div>`;
