@@ -139,6 +139,39 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(
   .app-header .container{flex-direction:column;align-items:flex-start;gap:12px}
   .filter-bar{position:static}
 }
+
+/* ===== IMPRESSÃO / PDF (relatório A4) ===== */
+#print-header{display:none}
+@media print{
+  @page{size:A4 portrait;margin:13mm 11mm}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  body{background:#fff!important}
+  .app-header,.filter-bar,#upload-screen,.auth-overlay,.footer-info,.header-actions{display:none!important}
+  .dashboard{display:block!important;padding:0!important;max-width:none!important}
+  #print-header{display:block!important;margin-bottom:10px;border-bottom:3px solid var(--gold);padding-bottom:8px}
+  #print-header .ph-top{display:flex;align-items:center;gap:14px}
+  #print-header img{height:42px}
+  #print-header .ph-title{font-family:'Fraunces',serif;font-size:20px;color:var(--navy);font-weight:600;letter-spacing:.01em}
+  #print-header .ph-sub{font-size:11px;color:var(--gray-600);margin-top:2px}
+  /* a barra de título interna do dashboard fica redundante no PDF */
+  #dashboard-content .report-header{display:none}
+  .kpi-grid{grid-template-columns:repeat(5,1fr)!important;gap:6px!important;margin-bottom:6px}
+  .kpi-card{padding:8px 9px!important;border:1px solid var(--gray-200)!important}
+  .kpi-card .value{font-size:18px!important}
+  .kpi-card .label{font-size:9px!important}
+  .kpi-card .delta,.kpi-card .compare{font-size:9px!important}
+  .section-title{font-size:16px!important;margin:14px 0 4px!important;page-break-after:avoid}
+  .section-subtitle{font-size:10px!important;margin-bottom:6px!important}
+  .data-table{font-size:10px!important}
+  .data-table th,.data-table td{padding:4px 7px!important}
+  .chart-card{padding:10px!important}
+  .chart-card canvas{max-height:230px!important}
+  .two-col{grid-template-columns:1fr 1fr!important;gap:14px!important}
+  /* não quebrar elementos no meio da página */
+  .kpi-card,.chart-card,.data-table,table,.lead-time-card,.two-col{page-break-inside:avoid}
+  h2.section-title,h3{page-break-after:avoid}
+  a[href]:after{content:""!important}
+}
 </style>
 </head>
 <body>
@@ -175,7 +208,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(
       <button id="btn-dashboard" class="btn primary">Dashboard</button>
       <button id="btn-upload" class="btn">Adicionar mês</button>
       <button id="btn-baixar-json" class="btn" style="display:none">Baixar JSON</button>
-      <button id="btn-baixar-pdf" class="btn" style="display:none">Imprimir/PDF</button>
+      <button id="btn-baixar-pdf" class="btn">Baixar PDF</button>
       <a id="btn-logout" class="btn" href="/api/logout" style="text-decoration:none;display:inline-flex;align-items:center">Sair</a>
     </div>
   </div>
@@ -227,6 +260,15 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(
 </div>
 
 <main class="dashboard container" id="dashboard">
+  <div id="print-header">
+    <div class="ph-top">
+      <img src="" alt="China Park Eco Resort" id="ph-logo">
+      <div>
+        <div class="ph-title">RELATÓRIO GERENCIAL</div>
+        <div class="ph-sub" id="ph-sub">—</div>
+      </div>
+    </div>
+  </div>
   <div id="dashboard-content"><div class="empty-state">
     <h2>Carregando histórico…</h2>
     <p>Buscando JSONs disponíveis em <code>/data/</code></p>
@@ -310,20 +352,18 @@ const state={
 // LOAD HISTORICAL DATA
 // =============================================================
 async function loadHistory(){
-  // Tenta /data/index.json primeiro (lista de meses disponíveis)
-  // Fallback: tenta meses dos últimos 5 anos
+  // Descoberta automática: varre de 2024-05 até o mês atual + 1.
+  // Não depende mais de index.json — adicionar um mês = só subir o JSON em /data/.
   state.available=[];
   let indexList=[];
-  try{
-    const idx=await fetch('data/index.json',{cache:'no-store'}).then(r=>r.json());
-    indexList=idx.months||idx;
-  }catch(e){
-    // Gera lista dos últimos 5 anos pra tentar
-    const hoje=new Date();
-    for(let y=hoje.getFullYear();y>=hoje.getFullYear()-5;y--){
-      for(let m=12;m>=1;m--){
-        indexList.push(`${y}-${String(m).padStart(2,'0')}`);
-      }
+  const hoje=new Date();
+  const ini={y:2024,m:5};                       // primeiro mês da série
+  const fim={y:hoje.getFullYear(),m:hoje.getMonth()+2}; // mês atual + 1 (margem)
+  for(let y=ini.y;y<=fim.y;y++){
+    const mIni=(y===ini.y)?ini.m:1;
+    const mFim=(y===fim.y)?fim.m:12;
+    for(let m=mIni;m<=mFim;m++){
+      if(m>=1&&m<=12)indexList.push(`${y}-${String(m).padStart(2,'0')}`);
     }
   }
   // Try fetching each
@@ -1245,6 +1285,18 @@ document.getElementById('filter-periodo').addEventListener('change',e=>{
 document.getElementById('filter-compare').addEventListener('change',e=>{state.compareMode=e.target.value;refresh();});
 document.getElementById('filter-topn').addEventListener('change',e=>{state.topN=parseInt(e.target.value);render();});
 document.getElementById('filter-canais').addEventListener('change',e=>{state.canaisFilter=e.target.value;render();});
+document.getElementById('btn-baixar-pdf').addEventListener('click',()=>{
+  const sel=resolveSelection();
+  // logo no cabeçalho de impressão
+  const brand=document.querySelector('.brand-logo-img');
+  const ph=document.getElementById('ph-logo');
+  if(brand&&ph)ph.src=brand.src;
+  const cmp=(state.compareMode!=='none'&&sel.refLabel)?` · comparativo vs ${sel.refLabel}`:'';
+  const ger=new Date().toLocaleDateString('pt-BR');
+  document.getElementById('ph-sub').textContent=`${sel.curLabel||''}${cmp} · emitido ${ger}`;
+  document.title=`Relatorio Gerencial - ${(sel.curLabel||'China Park').replace(/[·/]/g,'-')}`;
+  setTimeout(()=>window.print(),60);
+});
 document.getElementById('btn-compare-view').addEventListener('click',e=>{
   state.viewMode=state.viewMode==='compare'?'dash':'compare';
   const b=e.target;
