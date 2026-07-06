@@ -286,5 +286,1691 @@
       "diarias_r": 1360.12
     }
   ],
-  "dados_parciais": false
+  "dados_parciais": false,
+  "origem_full": {
+    "estados": [
+      {
+        "nome": "ES",
+        "aptos": 2859,
+        "estadias": 1392,
+        "perm": 2.05,
+        "diarias_r": 2573617.09,
+        "dmedia": 900.18
+      },
+      {
+        "nome": "RJ",
+        "aptos": 520,
+        "estadias": 226,
+        "perm": 2.3,
+        "diarias_r": 527137.13,
+        "dmedia": 1013.73
+      },
+      {
+        "nome": "MG",
+        "aptos": 347,
+        "estadias": 145,
+        "perm": 2.39,
+        "diarias_r": 367999.85,
+        "dmedia": 1060.52
+      },
+      {
+        "nome": "BA",
+        "aptos": 81,
+        "estadias": 30,
+        "perm": 2.7,
+        "diarias_r": 80868.71,
+        "dmedia": 998.38
+      },
+      {
+        "nome": "SP",
+        "aptos": 23,
+        "estadias": 11,
+        "perm": 2.09,
+        "diarias_r": 10437.17,
+        "dmedia": 453.79
+      },
+      {
+        "nome": "RS",
+        "aptos": 9,
+        "estadias": 6,
+        "perm": 1.5,
+        "diarias_r": 10934.67,
+        "dmedia": 1214.96
+      },
+      {
+        "nome": "AM",
+        "aptos": 6,
+        "estadias": 2,
+        "perm": 3.0,
+        "diarias_r": 6526.64,
+        "dmedia": 1087.77
+      },
+      {
+        "nome": "MA",
+        "aptos": 5,
+        "estadias": 2,
+        "perm": 2.5,
+        "diarias_r": 6611.16,
+        "dmedia": 1322.23
+      },
+      {
+        "nome": "RO",
+        "aptos": 5,
+        "estadias": 1,
+        "perm": 5.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "DF",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 1000.0,
+        "dmedia": 250.0
+      },
+      {
+        "nome": "MS",
+        "aptos": 4,
+        "estadias": 1,
+        "perm": 4.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "PR",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 3150.01,
+        "dmedia": 787.5
+      },
+      {
+        "nome": "EX",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "PE",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 1800.0,
+        "dmedia": 600.0
+      },
+      {
+        "nome": "TO",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 2906.28,
+        "dmedia": 968.76
+      },
+      {
+        "nome": "PI",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "RN",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 1158.0,
+        "dmedia": 579.0
+      },
+      {
+        "nome": "RR",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 3293.03,
+        "dmedia": 1646.52
+      },
+      {
+        "nome": "CE",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1606.1,
+        "dmedia": 1606.1
+      }
+    ],
+    "cidades": [
+      {
+        "nome": "SERRA",
+        "aptos": 450,
+        "estadias": 215,
+        "perm": 2.09,
+        "diarias_r": 357502.63,
+        "dmedia": 794.45
+      },
+      {
+        "nome": "VILA VELHA",
+        "aptos": 423,
+        "estadias": 208,
+        "perm": 2.03,
+        "diarias_r": 357098.82,
+        "dmedia": 844.21
+      },
+      {
+        "nome": "VITORIA",
+        "aptos": 354,
+        "estadias": 177,
+        "perm": 2.0,
+        "diarias_r": 321073.19,
+        "dmedia": 906.99
+      },
+      {
+        "nome": "CARIACICA",
+        "aptos": 246,
+        "estadias": 115,
+        "perm": 2.14,
+        "diarias_r": 208617.15,
+        "dmedia": 848.04
+      },
+      {
+        "nome": "CACHOEIRO DE ITAPEMIRIM",
+        "aptos": 196,
+        "estadias": 100,
+        "perm": 1.96,
+        "diarias_r": 173079.16,
+        "dmedia": 883.06
+      },
+      {
+        "nome": "ITAPERUNA",
+        "aptos": 133,
+        "estadias": 58,
+        "perm": 2.29,
+        "diarias_r": 133779.73,
+        "dmedia": 1005.86
+      },
+      {
+        "nome": "MARATAIZES",
+        "aptos": 124,
+        "estadias": 53,
+        "perm": 2.34,
+        "diarias_r": 136704.53,
+        "dmedia": 1102.46
+      },
+      {
+        "nome": "BOM JESUS DO ITABAPOANA",
+        "aptos": 115,
+        "estadias": 50,
+        "perm": 2.3,
+        "diarias_r": 119792.0,
+        "dmedia": 1041.67
+      },
+      {
+        "nome": "CAMPOS DOS GOYTACAZES",
+        "aptos": 110,
+        "estadias": 51,
+        "perm": 2.16,
+        "diarias_r": 118683.21,
+        "dmedia": 1078.94
+      },
+      {
+        "nome": "GUARAPARI",
+        "aptos": 109,
+        "estadias": 55,
+        "perm": 1.98,
+        "diarias_r": 113302.99,
+        "dmedia": 1039.48
+      },
+      {
+        "nome": "SAO MATEUS",
+        "aptos": 98,
+        "estadias": 44,
+        "perm": 2.23,
+        "diarias_r": 81967.95,
+        "dmedia": 836.41
+      },
+      {
+        "nome": "GOVERNADOR VALADARES",
+        "aptos": 96,
+        "estadias": 34,
+        "perm": 2.82,
+        "diarias_r": 98696.33,
+        "dmedia": 1028.09
+      },
+      {
+        "nome": "LINHARES",
+        "aptos": 91,
+        "estadias": 45,
+        "perm": 2.02,
+        "diarias_r": 84343.93,
+        "dmedia": 926.86
+      },
+      {
+        "nome": "COLATINA",
+        "aptos": 59,
+        "estadias": 29,
+        "perm": 2.03,
+        "diarias_r": 61686.83,
+        "dmedia": 1045.54
+      },
+      {
+        "nome": "ITAPEMIRIM",
+        "aptos": 54,
+        "estadias": 24,
+        "perm": 2.25,
+        "diarias_r": 42477.46,
+        "dmedia": 786.62
+      },
+      {
+        "nome": "SAO GABRIEL DA PALHA",
+        "aptos": 47,
+        "estadias": 25,
+        "perm": 1.88,
+        "diarias_r": 62435.04,
+        "dmedia": 1328.41
+      },
+      {
+        "nome": "BOM JESUS DO NORTE",
+        "aptos": 45,
+        "estadias": 22,
+        "perm": 2.05,
+        "diarias_r": 48861.15,
+        "dmedia": 1085.8
+      },
+      {
+        "nome": "IPATINGA",
+        "aptos": 42,
+        "estadias": 18,
+        "perm": 2.33,
+        "diarias_r": 47170.32,
+        "dmedia": 1123.1
+      },
+      {
+        "nome": "ARACRUZ",
+        "aptos": 37,
+        "estadias": 17,
+        "perm": 2.18,
+        "diarias_r": 35572.71,
+        "dmedia": 961.42
+      },
+      {
+        "nome": "ANCHIETA",
+        "aptos": 35,
+        "estadias": 16,
+        "perm": 2.19,
+        "diarias_r": 33351.13,
+        "dmedia": 952.89
+      },
+      {
+        "nome": "TEIXEIRA DE FREITAS",
+        "aptos": 34,
+        "estadias": 12,
+        "perm": 2.83,
+        "diarias_r": 27747.53,
+        "dmedia": 816.1
+      },
+      {
+        "nome": "ALFREDO CHAVES",
+        "aptos": 28,
+        "estadias": 16,
+        "perm": 1.75,
+        "diarias_r": 31509.01,
+        "dmedia": 1125.32
+      },
+      {
+        "nome": "BARRA DE SAO FRANCISCO",
+        "aptos": 26,
+        "estadias": 8,
+        "perm": 3.25,
+        "diarias_r": 22370.84,
+        "dmedia": 860.42
+      },
+      {
+        "nome": "NOVA VENECIA",
+        "aptos": 26,
+        "estadias": 12,
+        "perm": 2.17,
+        "diarias_r": 22272.74,
+        "dmedia": 856.64
+      },
+      {
+        "nome": "VIANA",
+        "aptos": 26,
+        "estadias": 13,
+        "perm": 2.0,
+        "diarias_r": 25261.88,
+        "dmedia": 971.61
+      },
+      {
+        "nome": "CARATINGA",
+        "aptos": 23,
+        "estadias": 8,
+        "perm": 2.88,
+        "diarias_r": 23259.17,
+        "dmedia": 1011.27
+      },
+      {
+        "nome": "PIUMA",
+        "aptos": 23,
+        "estadias": 10,
+        "perm": 2.3,
+        "diarias_r": 23970.62,
+        "dmedia": 1042.2
+      },
+      {
+        "nome": "CASTELO",
+        "aptos": 22,
+        "estadias": 12,
+        "perm": 1.83,
+        "diarias_r": 24894.27,
+        "dmedia": 1131.56
+      },
+      {
+        "nome": "RIO DAS OSTRAS",
+        "aptos": 21,
+        "estadias": 8,
+        "perm": 2.63,
+        "diarias_r": 15813.4,
+        "dmedia": 753.02
+      },
+      {
+        "nome": "BELO HORIZONTE",
+        "aptos": 20,
+        "estadias": 7,
+        "perm": 2.86,
+        "diarias_r": 11267.7,
+        "dmedia": 563.39
+      },
+      {
+        "nome": "CABO FRIO",
+        "aptos": 20,
+        "estadias": 7,
+        "perm": 2.86,
+        "diarias_r": 8870.62,
+        "dmedia": 443.53
+      },
+      {
+        "nome": "ALEGRE",
+        "aptos": 19,
+        "estadias": 9,
+        "perm": 2.11,
+        "diarias_r": 16990.24,
+        "dmedia": 894.22
+      },
+      {
+        "nome": "SANTA MARIA DE JETIBA",
+        "aptos": 17,
+        "estadias": 14,
+        "perm": 1.21,
+        "diarias_r": 21983.72,
+        "dmedia": 1293.16
+      },
+      {
+        "nome": "MARECHAL FLORIANO",
+        "aptos": 16,
+        "estadias": 8,
+        "perm": 2.0,
+        "diarias_r": 6656.57,
+        "dmedia": 416.04
+      },
+      {
+        "nome": "SALVADOR",
+        "aptos": 16,
+        "estadias": 5,
+        "perm": 3.2,
+        "diarias_r": 16619.12,
+        "dmedia": 1038.7
+      },
+      {
+        "nome": "MACAE",
+        "aptos": 15,
+        "estadias": 7,
+        "perm": 2.14,
+        "diarias_r": 25175.99,
+        "dmedia": 1678.4
+      },
+      {
+        "nome": "PRESIDENTE KENNEDY",
+        "aptos": 15,
+        "estadias": 7,
+        "perm": 2.14,
+        "diarias_r": 12906.57,
+        "dmedia": 860.44
+      },
+      {
+        "nome": "MIMOSO DO SUL",
+        "aptos": 14,
+        "estadias": 4,
+        "perm": 3.5,
+        "diarias_r": 10871.64,
+        "dmedia": 776.55
+      },
+      {
+        "nome": "RIO DE JANEIRO",
+        "aptos": 14,
+        "estadias": 7,
+        "perm": 2.0,
+        "diarias_r": 15420.9,
+        "dmedia": 1101.49
+      },
+      {
+        "nome": "BAIXO GUANDU",
+        "aptos": 13,
+        "estadias": 6,
+        "perm": 2.17,
+        "diarias_r": 5744.38,
+        "dmedia": 441.88
+      },
+      {
+        "nome": "SANTA TERESA",
+        "aptos": 13,
+        "estadias": 9,
+        "perm": 1.44,
+        "diarias_r": 15129.51,
+        "dmedia": 1163.81
+      },
+      {
+        "nome": "SAO JOSE DO CALCADO",
+        "aptos": 13,
+        "estadias": 6,
+        "perm": 2.17,
+        "diarias_r": 14000.0,
+        "dmedia": 1076.92
+      },
+      {
+        "nome": "VENDA NOVA DO IMIGRANTE",
+        "aptos": 13,
+        "estadias": 9,
+        "perm": 1.44,
+        "diarias_r": 12883.14,
+        "dmedia": 991.01
+      },
+      {
+        "nome": "ITAMARAJU",
+        "aptos": 12,
+        "estadias": 5,
+        "perm": 2.4,
+        "diarias_r": 17005.96,
+        "dmedia": 1417.16
+      },
+      {
+        "nome": "AGUA DOCE DO NORTE",
+        "aptos": 10,
+        "estadias": 4,
+        "perm": 2.5,
+        "diarias_r": 8420.02,
+        "dmedia": 842.0
+      },
+      {
+        "nome": "AIMORES",
+        "aptos": 10,
+        "estadias": 4,
+        "perm": 2.5,
+        "diarias_r": 10495.93,
+        "dmedia": 1049.59
+      },
+      {
+        "nome": "JOAO NEIVA",
+        "aptos": 10,
+        "estadias": 4,
+        "perm": 2.5,
+        "diarias_r": 5684.61,
+        "dmedia": 568.46
+      },
+      {
+        "nome": "RIO NOVO DO SUL",
+        "aptos": 10,
+        "estadias": 4,
+        "perm": 2.5,
+        "diarias_r": 4150.01,
+        "dmedia": 415.0
+      },
+      {
+        "nome": "CARDOSO MOREIRA",
+        "aptos": 9,
+        "estadias": 4,
+        "perm": 2.25,
+        "diarias_r": 10581.84,
+        "dmedia": 1175.76
+      },
+      {
+        "nome": "ITALVA",
+        "aptos": 9,
+        "estadias": 4,
+        "perm": 2.25,
+        "diarias_r": 7400.0,
+        "dmedia": 822.22
+      },
+      {
+        "nome": "JAGUARE",
+        "aptos": 9,
+        "estadias": 4,
+        "perm": 2.25,
+        "diarias_r": 15031.65,
+        "dmedia": 1670.18
+      },
+      {
+        "nome": "MANHUACU",
+        "aptos": 9,
+        "estadias": 4,
+        "perm": 2.25,
+        "diarias_r": 11013.51,
+        "dmedia": 1223.72
+      },
+      {
+        "nome": "MARILANDIA",
+        "aptos": 9,
+        "estadias": 6,
+        "perm": 1.5,
+        "diarias_r": 6095.58,
+        "dmedia": 677.29
+      },
+      {
+        "nome": "CONCEICAO DO CASTELO",
+        "aptos": 8,
+        "estadias": 4,
+        "perm": 2.0,
+        "diarias_r": 5138.62,
+        "dmedia": 642.33
+      },
+      {
+        "nome": "DOMINGOS MARTINS",
+        "aptos": 8,
+        "estadias": 5,
+        "perm": 1.6,
+        "diarias_r": 4000.0,
+        "dmedia": 500.0
+      },
+      {
+        "nome": "FUNDAO",
+        "aptos": 8,
+        "estadias": 3,
+        "perm": 2.67,
+        "diarias_r": 2671.2,
+        "dmedia": 333.9
+      },
+      {
+        "nome": "IBATIBA",
+        "aptos": 8,
+        "estadias": 4,
+        "perm": 2.0,
+        "diarias_r": 11169.77,
+        "dmedia": 1396.22
+      },
+      {
+        "nome": "ICONHA",
+        "aptos": 8,
+        "estadias": 4,
+        "perm": 2.0,
+        "diarias_r": 6186.61,
+        "dmedia": 773.33
+      },
+      {
+        "nome": "MANTENOPOLIS",
+        "aptos": 8,
+        "estadias": 3,
+        "perm": 2.67,
+        "diarias_r": 8081.1,
+        "dmedia": 1010.14
+      },
+      {
+        "nome": "PINHEIROS",
+        "aptos": 8,
+        "estadias": 4,
+        "perm": 2.0,
+        "diarias_r": 9137.8,
+        "dmedia": 1142.22
+      },
+      {
+        "nome": "SANTO ANTONIO DE PADUA",
+        "aptos": 8,
+        "estadias": 4,
+        "perm": 2.0,
+        "diarias_r": 6186.11,
+        "dmedia": 773.26
+      },
+      {
+        "nome": "TIMOTEO",
+        "aptos": 8,
+        "estadias": 3,
+        "perm": 2.67,
+        "diarias_r": 13274.62,
+        "dmedia": 1659.33
+      },
+      {
+        "nome": "VILA VALERIO",
+        "aptos": 8,
+        "estadias": 4,
+        "perm": 2.0,
+        "diarias_r": 10508.03,
+        "dmedia": 1313.5
+      },
+      {
+        "nome": "AFONSO CLAUDIO",
+        "aptos": 7,
+        "estadias": 4,
+        "perm": 1.75,
+        "diarias_r": 7920.69,
+        "dmedia": 1131.53
+      },
+      {
+        "nome": "ARARUAMA",
+        "aptos": 7,
+        "estadias": 1,
+        "perm": 7.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "ARMACAO DOS BUZIOS",
+        "aptos": 7,
+        "estadias": 1,
+        "perm": 7.0,
+        "diarias_r": 12591.29,
+        "dmedia": 1798.76
+      },
+      {
+        "nome": "IUNA",
+        "aptos": 7,
+        "estadias": 4,
+        "perm": 1.75,
+        "diarias_r": 8172.19,
+        "dmedia": 1167.46
+      },
+      {
+        "nome": "VICOSA",
+        "aptos": 7,
+        "estadias": 3,
+        "perm": 2.33,
+        "diarias_r": 12539.19,
+        "dmedia": 1791.31
+      },
+      {
+        "nome": "ALTO JEQUITIBA",
+        "aptos": 6,
+        "estadias": 2,
+        "perm": 3.0,
+        "diarias_r": 7563.75,
+        "dmedia": 1260.63
+      },
+      {
+        "nome": "ALTO RIO NOVO",
+        "aptos": 6,
+        "estadias": 2,
+        "perm": 3.0,
+        "diarias_r": 5270.01,
+        "dmedia": 878.34
+      },
+      {
+        "nome": "CORONEL FABRICIANO",
+        "aptos": 6,
+        "estadias": 3,
+        "perm": 2.0,
+        "diarias_r": 7084.23,
+        "dmedia": 1180.71
+      },
+      {
+        "nome": "MANAUS",
+        "aptos": 6,
+        "estadias": 2,
+        "perm": 3.0,
+        "diarias_r": 6526.64,
+        "dmedia": 1087.77
+      },
+      {
+        "nome": "MARTINS SOARES",
+        "aptos": 6,
+        "estadias": 2,
+        "perm": 3.0,
+        "diarias_r": 4417.56,
+        "dmedia": 736.26
+      },
+      {
+        "nome": "MONTANHA",
+        "aptos": 6,
+        "estadias": 2,
+        "perm": 3.0,
+        "diarias_r": 2355.62,
+        "dmedia": 392.6
+      },
+      {
+        "nome": "MUNIZ FREIRE",
+        "aptos": 6,
+        "estadias": 4,
+        "perm": 1.5,
+        "diarias_r": 8789.2,
+        "dmedia": 1464.87
+      },
+      {
+        "nome": "MURIAE",
+        "aptos": 6,
+        "estadias": 3,
+        "perm": 2.0,
+        "diarias_r": 6188.4,
+        "dmedia": 1031.4
+      },
+      {
+        "nome": "NANUQUE",
+        "aptos": 6,
+        "estadias": 3,
+        "perm": 2.0,
+        "diarias_r": 3863.32,
+        "dmedia": 643.89
+      },
+      {
+        "nome": "SAO FRANCISCO DE ITABAPOANA",
+        "aptos": 6,
+        "estadias": 3,
+        "perm": 2.0,
+        "diarias_r": 4947.2,
+        "dmedia": 824.53
+      },
+      {
+        "nome": "AGUIA BRANCA",
+        "aptos": 5,
+        "estadias": 2,
+        "perm": 2.5,
+        "diarias_r": 10422.8,
+        "dmedia": 2084.56
+      },
+      {
+        "nome": "ALTO CAPARAO",
+        "aptos": 5,
+        "estadias": 2,
+        "perm": 2.5,
+        "diarias_r": 5962.87,
+        "dmedia": 1192.57
+      },
+      {
+        "nome": "APIACA",
+        "aptos": 5,
+        "estadias": 2,
+        "perm": 2.5,
+        "diarias_r": 7850.38,
+        "dmedia": 1570.08
+      },
+      {
+        "nome": "BREJETUBA",
+        "aptos": 5,
+        "estadias": 2,
+        "perm": 2.5,
+        "diarias_r": 3530.0,
+        "dmedia": 706.0
+      },
+      {
+        "nome": "CACOAL",
+        "aptos": 5,
+        "estadias": 1,
+        "perm": 5.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "ITAGUACU",
+        "aptos": 5,
+        "estadias": 3,
+        "perm": 1.67,
+        "diarias_r": 4829.98,
+        "dmedia": 966.0
+      },
+      {
+        "nome": "MANTENA",
+        "aptos": 5,
+        "estadias": 3,
+        "perm": 1.67,
+        "diarias_r": 3998.44,
+        "dmedia": 799.69
+      },
+      {
+        "nome": "PANCAS",
+        "aptos": 5,
+        "estadias": 2,
+        "perm": 2.5,
+        "diarias_r": 4506.57,
+        "dmedia": 901.31
+      },
+      {
+        "nome": "SAO PAULO",
+        "aptos": 5,
+        "estadias": 2,
+        "perm": 2.5,
+        "diarias_r": 3574.47,
+        "dmedia": 714.89
+      },
+      {
+        "nome": "VARGEM ALTA",
+        "aptos": 5,
+        "estadias": 3,
+        "perm": 1.67,
+        "diarias_r": 4821.56,
+        "dmedia": 964.31
+      },
+      {
+        "nome": "BRASILIA",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 1000.0,
+        "dmedia": 250.0
+      },
+      {
+        "nome": "CAMBUCI",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 2200.0,
+        "dmedia": 550.0
+      },
+      {
+        "nome": "CHALE",
+        "aptos": 4,
+        "estadias": 1,
+        "perm": 4.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "COSTA RICA",
+        "aptos": 4,
+        "estadias": 1,
+        "perm": 4.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "DUQUE DE CAXIAS",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 2497.98,
+        "dmedia": 624.5
+      },
+      {
+        "nome": "MANHUMIRIM",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 5238.8,
+        "dmedia": 1309.7
+      },
+      {
+        "nome": "NOVA VICOSA",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 2841.01,
+        "dmedia": 710.25
+      },
+      {
+        "nome": "PESCADOR",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 8247.51,
+        "dmedia": 2061.88
+      },
+      {
+        "nome": "PIRAPETINGA",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 4400.0,
+        "dmedia": 1100.0
+      },
+      {
+        "nome": "PONTO BELO",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 3100.04,
+        "dmedia": 775.01
+      },
+      {
+        "nome": "PORTO SEGURO",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 2693.73,
+        "dmedia": 673.43
+      },
+      {
+        "nome": "SALINAS",
+        "aptos": 4,
+        "estadias": 1,
+        "perm": 4.0,
+        "diarias_r": 3655.53,
+        "dmedia": 913.88
+      },
+      {
+        "nome": "SANTA RITA DO ITUETO",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 7537.66,
+        "dmedia": 1884.42
+      },
+      {
+        "nome": "SAO JOAO DA BARRA",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 3709.17,
+        "dmedia": 927.29
+      },
+      {
+        "nome": "TEOFILO OTONI",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 5051.88,
+        "dmedia": 1262.97
+      },
+      {
+        "nome": "VARRE-SAI",
+        "aptos": 4,
+        "estadias": 2,
+        "perm": 2.0,
+        "diarias_r": 6805.96,
+        "dmedia": 1701.49
+      },
+      {
+        "nome": "VARZEA NOVA",
+        "aptos": 4,
+        "estadias": 1,
+        "perm": 4.0,
+        "diarias_r": 4502.76,
+        "dmedia": 1125.69
+      },
+      {
+        "nome": "ABRE CAMPO",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 3773.14,
+        "dmedia": 1257.71
+      },
+      {
+        "nome": "ARRAIAL DO CABO",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 2803.71,
+        "dmedia": 934.57
+      },
+      {
+        "nome": "BARRA DO PIRAI",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 3000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "CAMPINAS",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "COTIA",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "DIVINOPOLIS",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 2803.71,
+        "dmedia": 934.57
+      },
+      {
+        "nome": "GOVERNADOR LINDENBERG",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 3595.28,
+        "dmedia": 1198.43
+      },
+      {
+        "nome": "GRAVATA",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 1800.0,
+        "dmedia": 600.0
+      },
+      {
+        "nome": "GUACUI",
+        "aptos": 3,
+        "estadias": 2,
+        "perm": 1.5,
+        "diarias_r": 1000.0,
+        "dmedia": 333.33
+      },
+      {
+        "nome": "IBIRACU",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "IPABA",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 2773.4,
+        "dmedia": 924.47
+      },
+      {
+        "nome": "JALES",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "JERONIMO MONTEIRO",
+        "aptos": 3,
+        "estadias": 2,
+        "perm": 1.5,
+        "diarias_r": 3613.58,
+        "dmedia": 1204.53
+      },
+      {
+        "nome": "LUISBURGO",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 2324.7,
+        "dmedia": 774.9
+      },
+      {
+        "nome": "MEDEIROS NETO",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 4999.16,
+        "dmedia": 1666.39
+      },
+      {
+        "nome": "MESQUITA",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "MUTUM",
+        "aptos": 3,
+        "estadias": 2,
+        "perm": 1.5,
+        "diarias_r": 3762.49,
+        "dmedia": 1254.16
+      },
+      {
+        "nome": "NATIVIDADE",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "PALMAS",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 2906.28,
+        "dmedia": 968.76
+      },
+      {
+        "nome": "PONTA GROSSA",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 2150.01,
+        "dmedia": 716.67
+      },
+      {
+        "nome": "SANTANA DO PARAISO",
+        "aptos": 3,
+        "estadias": 2,
+        "perm": 1.5,
+        "diarias_r": 3394.54,
+        "dmedia": 1131.51
+      },
+      {
+        "nome": "SAO JOAO DE MERITI",
+        "aptos": 3,
+        "estadias": 2,
+        "perm": 1.5,
+        "diarias_r": 5732.51,
+        "dmedia": 1910.84
+      },
+      {
+        "nome": "SAO JOAO DO MANHUACU",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 2914.47,
+        "dmedia": 971.49
+      },
+      {
+        "nome": "SAO JOSE DO GOIABAL",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 2442.85,
+        "dmedia": 814.28
+      },
+      {
+        "nome": "SAO LUIS",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 3311.16,
+        "dmedia": 1103.72
+      },
+      {
+        "nome": "SAO PEDRO DA ALDEIA",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 3000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "SILVA JARDIM",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 3443.16,
+        "dmedia": 1147.72
+      },
+      {
+        "nome": "SIMONESIA",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 2733.36,
+        "dmedia": 911.12
+      },
+      {
+        "nome": "URUGUAIANA",
+        "aptos": 3,
+        "estadias": 1,
+        "perm": 3.0,
+        "diarias_r": 2207.94,
+        "dmedia": 735.98
+      },
+      {
+        "nome": "ALVARENGA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2831.02,
+        "dmedia": 1415.51
+      },
+      {
+        "nome": "BARRA MANSA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2200.0,
+        "dmedia": 1100.0
+      },
+      {
+        "nome": "BETIM",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2798.57,
+        "dmedia": 1399.29
+      },
+      {
+        "nome": "BOA VISTA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 3293.03,
+        "dmedia": 1646.52
+      },
+      {
+        "nome": "CAMPOS",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "CARANGOLA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "CARAPICUIBA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "CASIMIRO DE ABREU",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 1918.14,
+        "dmedia": 959.07
+      },
+      {
+        "nome": "CONSELHEIRO PENA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 3094.22,
+        "dmedia": 1547.11
+      },
+      {
+        "nome": "DIADEMA",
+        "aptos": 2,
+        "estadias": 2,
+        "perm": 1.0,
+        "diarias_r": 1089.0,
+        "dmedia": 544.5
+      },
+      {
+        "nome": "DIVINO",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 3166.02,
+        "dmedia": 1583.01
+      },
+      {
+        "nome": "DORES DO RIO PRETO",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2120.58,
+        "dmedia": 1060.29
+      },
+      {
+        "nome": "EUGENOPOLIS",
+        "aptos": 2,
+        "estadias": 2,
+        "perm": 1.0,
+        "diarias_r": 3247.09,
+        "dmedia": 1623.55
+      },
+      {
+        "nome": "IMPERATRIZ",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 3300.0,
+        "dmedia": 1650.0
+      },
+      {
+        "nome": "INHAPIM",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2040.58,
+        "dmedia": 1020.29
+      },
+      {
+        "nome": "ITABELA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2322.54,
+        "dmedia": 1161.27
+      },
+      {
+        "nome": "ITARANA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2437.02,
+        "dmedia": 1218.51
+      },
+      {
+        "nome": "JUIZ DE FORA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "LAJINHA",
+        "aptos": 2,
+        "estadias": 2,
+        "perm": 1.0,
+        "diarias_r": 1964.71,
+        "dmedia": 982.36
+      },
+      {
+        "nome": "LARANJA DA TERRA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "LIMEIRA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2108.74,
+        "dmedia": 1054.37
+      },
+      {
+        "nome": "MINAS GERAIS",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 3082.95,
+        "dmedia": 1541.48
+      },
+      {
+        "nome": "MUCURI",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2136.9,
+        "dmedia": 1068.45
+      },
+      {
+        "nome": "MUQUI",
+        "aptos": 2,
+        "estadias": 2,
+        "perm": 1.0,
+        "diarias_r": 2000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "PARNAIBA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "PATU",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 1158.0,
+        "dmedia": 579.0
+      },
+      {
+        "nome": "PORTO ALEGRE",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 4726.73,
+        "dmedia": 2363.36
+      },
+      {
+        "nome": "RAUL SOARES",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2373.09,
+        "dmedia": 1186.55
+      },
+      {
+        "nome": "SANTA LEOPOLDINA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "SANTA RITA DE MINAS",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 3955.09,
+        "dmedia": 1977.55
+      },
+      {
+        "nome": "SANTANA DE PARNAIBA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2288.3,
+        "dmedia": 1144.15
+      },
+      {
+        "nome": "SAO FIDELIS",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 7609.01,
+        "dmedia": 3804.51
+      },
+      {
+        "nome": "SAO GERALDO DO BAIXIO",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 2463.4,
+        "dmedia": 1231.7
+      },
+      {
+        "nome": "SAO ROQUE DO CANAA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "SOORETAMA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "UBAPORANGA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 963.36,
+        "dmedia": 481.68
+      },
+      {
+        "nome": "UBERLANDIA",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "VERMELHO NOVO",
+        "aptos": 2,
+        "estadias": 1,
+        "perm": 2.0,
+        "diarias_r": 3348.47,
+        "dmedia": 1674.24
+      },
+      {
+        "nome": "ALEGRETE",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "APUCARANA",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "ATILIO VIVACQUA",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 2000.0,
+        "dmedia": 2000.0
+      },
+      {
+        "nome": "CONSELHEIRO LAFAIETE",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "ECOPORANGA",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1486.79,
+        "dmedia": 1486.79
+      },
+      {
+        "nome": "FARROUPILHA",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "FORTALEZA",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1606.1,
+        "dmedia": 1606.1
+      },
+      {
+        "nome": "GUARULHOS",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1376.66,
+        "dmedia": 1376.66
+      },
+      {
+        "nome": "IBITIRAMA",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "JOAO MONLEVADE",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1768.54,
+        "dmedia": 1768.54
+      },
+      {
+        "nome": "JULIO DE CASTILHOS",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "PATOS DE MINAS",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "RIO BANANAL",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      },
+      {
+        "nome": "ROSARIO DO SUL",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "SANTA MARGARIDA",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1053.36,
+        "dmedia": 1053.36
+      },
+      {
+        "nome": "SANTA MARIA DO JETIBA",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "SAO DOMINGOS DO NORTE",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 1000.0,
+        "dmedia": 1000.0
+      },
+      {
+        "nome": "SAO GONCALO",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 2975.2,
+        "dmedia": 2975.2
+      },
+      {
+        "nome": "VARGINHA",
+        "aptos": 1,
+        "estadias": 1,
+        "perm": 1.0,
+        "diarias_r": 0.0,
+        "dmedia": 0.0
+      }
+    ]
+  }
 }
