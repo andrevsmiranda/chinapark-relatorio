@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "mes": 5,
+  "ano": 2026,
+  "label": "Maio de 2026",
+  "geracao": "2026-07-06",
+  "faturamento": {
+    "total": 4335539.62,
+    "hospedagem": 3658375.41,
+    "ab": 441582.36,
+    "outros": 235581.85
+  },
+  "ocupacao": {
+    "diarias_vendidas": 3792,
+    "diarias_pagas": 2963,
+    "aptos_disp_mes": 7037,
+    "aptos_disp_dia_medio": 227,
+    "ocup_media": 53.886599403154754,
+    "ocup_fds": 82.73127753303964,
+    "ocup_semana": 40.15103838892385,
+    "dias_fds": 10,
+    "dias_semana": 21
+  },
+  "adr": {
+    "geral": 1213.5535174510678,
+    "fds": 1393.2373086268667,
+    "semana": 1038.0653043946509
+  },
+  "revpar": 510.97888020463256,
+  "permanencia": 2.13,
+  "lead_time_medio": 46.6,
+  "lead_time_count": 788,
+  "fat_split": {
+    "fds": 2039698.09,
+    "semana": 1556060.29
+  },
+  "mix_segmento": {
+    "EMPRESA": {
+      "aptos": 1162,
+      "diarias_r": 1387465.9
+    },
+    "PARTICULAR": {
+      "aptos": 840,
+      "diarias_r": 1201708.11
+    },
+    "GRUPO": {
+      "aptos": 1030,
+      "diarias_r": 1009784.02
+    },
+    "COTISTA": {
+      "aptos": 636,
+      "diarias_r": 0.0
+    }
+  },
+  "mix_total_aptos": 3668,
+  "canais": {
+    "motor": {
+      "aptos": 827,
+      "diarias_r": 1075247.66
+    },
+    "booking": {
+      "aptos": 21,
+      "diarias_r": 32129.58
+    },
+    "expedia": {
+      "aptos": 32,
+      "diarias_r": 33803.73
+    },
+    "bancorbras": {
+      "aptos": 77,
+      "diarias_r": 64164.18
+    },
+    "rdc": {
+      "aptos": 78,
+      "diarias_r": 49427.67
+    },
+    "cvc": {
+      "aptos": 16,
+      "diarias_r": 14440.44
+    },
+    "montreal": {
+      "aptos": 16,
+      "diarias_r": 12875.03
+    },
+    "demais": {
+      "aptos": 23,
+      "diarias_r": 22417.4
+    }
+  },
+  "offline": {
+    "aptos": 2702.0,
+    "diarias_r": 2291252.69
+  },
+  "estados": {
+    "ES": 2859,
+    "RJ": 520,
+    "MG": 347,
+    "BA": 81,
+    "Outros": 50,
+    "SP": 23,
+    "RS": 9,
+    "AM": 6,
+    "MA": 5,
+    "RO": 5,
+    "DF": 4,
+    "PR": 4,
+    "MS": 4,
+    "PE": 3,
+    "EX": 3,
+    "TO": 3,
+    "PI": 2,
+    "RN": 2,
+    "RR": 2,
+    "CE": 1
+  },
+  "total_estados": 3933,
+  "es_aptos": 2859,
+  "grande_vitoria": 1616,
+  "demais_municipios_es": 1243,
+  "top_cidades": [
+    {
+      "name": "SERRA",
+      "aptos": 450
+    },
+    {
+      "name": "VILA VELHA",
+      "aptos": 423
+    },
+    {
+      "name": "VITORIA",
+      "aptos": 354
+    },
+    {
+      "name": "CARIACICA",
+      "aptos": 246
+    },
+    {
+      "name": "CACHOEIRO DE ITAPEMIRIM",
+      "aptos": 196
+    },
+    {
+      "name": "ITAPERUNA",
+      "aptos": 133
+    },
+    {
+      "name": "MARATAIZES",
+      "aptos": 124
+    },
+    {
+      "name": "BOM JESUS DO ITABAPOANA",
+      "aptos": 115
+    },
+    {
+      "name": "CAMPOS DOS GOYTACAZES",
+      "aptos": 110
+    },
+    {
+      "name": "GUARAPARI",
+      "aptos": 109
+    },
+    {
+      "name": "SAO MATEUS",
+      "aptos": 98
+    },
+    {
+      "name": "GOVERNADOR VALADARES",
+      "aptos": 96
+    },
+    {
+      "name": "LINHARES",
+      "aptos": 91
+    },
+    {
+      "name": "COLATINA",
+      "aptos": 59
+    },
+    {
+      "name": "ITAPEMIRIM",
+      "aptos": 54
+    },
+    {
+      "name": "SAO GABRIEL DA PALHA",
+      "aptos": 47
+    },
+    {
+      "name": "BOM JESUS DO NORTE",
+      "aptos": 45
+    },
+    {
+      "name": "IPATINGA",
+      "aptos": 42
+    },
+    {
+      "name": "ARACRUZ",
+      "aptos": 37
+    },
+    {
+      "name": "ANCHIETA",
+      "aptos": 35
+    },
+    {
+      "name": "TEIXEIRA DE FREITAS",
+      "aptos": 34
+    },
+    {
+      "name": "ALFREDO CHAVES",
+      "aptos": 28
+    },
+    {
+      "name": "VIANA",
+      "aptos": 26
+    },
+    {
+      "name": "NOVA VENECIA",
+      "aptos": 26
+    },
+    {
+      "name": "BARRA DE SAO FRANCISCO",
+      "aptos": 26
+    },
+    {
+      "name": "CARATINGA",
+      "aptos": 23
+    },
+    {
+      "name": "PIUMA",
+      "aptos": 23
+    },
+    {
+      "name": "CASTELO",
+      "aptos": 22
+    },
+    {
+      "name": "RIO DAS OSTRAS",
+      "aptos": 21
+    },
+    {
+      "name": "CABO FRIO",
+      "aptos": 20
+    }
+  ],
+  "top_empresas": [
+    {
+      "name": "MARIA DE LOURDE EXCURSAO",
+      "aptos": 24,
+      "diarias_r": 31630.0
+    },
+    {
+      "name": "ROBERTO DE OLIVEIRA",
+      "aptos": 15,
+      "diarias_r": 23500.0
+    },
+    {
+      "name": "DESPEGAR-PAM",
+      "aptos": 11,
+      "diarias_r": 9159.31
+    },
+    {
+      "name": "TVC TRAVEL",
+      "aptos": 3,
+      "diarias_r": 2693.73
+    },
+    {
+      "name": "FF18 VIAGENS E TURISMO LTDA",
+      "aptos": 2,
+      "diarias_r": 2671.43
+    },
+    {
+      "name": "ROTAS DESTINOS TURISMO",
+      "aptos": 2,
+      "diarias_r": 1120.0
+    },
+    {
+      "name": "PACOTES MARCELO TARDIN 2025 E 2026",
+      "aptos": 2,
+      "diarias_r": 2670.84
+    },
+    {
+      "name": "DMA TURISMO E SERVICOS LTDA",
+      "aptos": 2,
+      "diarias_r": 2365.71
+    },
+    {
+      "name": "ITERPEC SERVICOS EM TURISMO LTDA",
+      "aptos": 1,
+      "diarias_r": 1360.12
+    }
+  ],
+  "dados_parciais": false
+}
